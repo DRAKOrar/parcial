@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ul class="nav">
+      <li><a routerLink="/news1">palabras clave</a></li>
+      <li><a routerLink="/news2">cards news</a></li>
+      <li><a routerLink="/tarjeta">tarjetas</a></li>
+      <li><a routerLink="/tarjeta">Contact</a></li>
+      <li><a href="#">Work</a></li>
+    </ul>
+  </ion-toolbar>
+  <ion-searchbar (ionInput)="searchNews($event)" placeholder="Buscar noticias..."></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let article of filteredNews">
+      <ion-thumbnail slot="start">
+        <img [src]="article.urlToImage" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.description }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMoreNews($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more news...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

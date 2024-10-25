@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ul class="nav">
+      <li><a routerLink="/home">alerts</a></li>
+      <li><a routerLink="/about">selectores</a></li>
+      <li><a routerLink="/tarjeta">tarjetas</a></li>
+      <li><a routerLink="/tarjeta">Contact</a></li>
+      <li><a href="#">Work</a></li>
+    </ul>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="12" size-md="4" offset-md="4" *ngFor="let article of newsArticles">
+      <ion-card *ngFor="let article of newsArticles">
+        <ion-card-header>
+          <ion-card-title>{{ article.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img [src]="article.urlToImage" *ngIf="article.urlToImage"></ion-img>
+          <p>{{ article.description }}</p>
+        </ion-card-content>
+        <ion-button expand="full" fill="outline" href="{{ article.url }}" target="_blank">
+          Read More
+        </ion-button>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
